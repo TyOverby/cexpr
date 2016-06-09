@@ -33,6 +33,8 @@ int foo(int a, int b) { return a + b }
 ```
 
 ### Parent Scope Access and Modification
+
+**defer.cexpr**
 ```scheme
 (fn read_n:u8* (name:char* n:int) 
     (var mem:u8* = (malloc n))
@@ -43,9 +45,11 @@ int foo(int a, int b) { return a + b }
     (check (!= file 0))
     (defer (fclose file))
     (check (!= (fread mem 0 n file) 0))
+    
     (return mem))
 ```
 
+**defer.c**
 ```c
 u8* read_n(char* name, int n) {
     u8* mem = malloc(n);
